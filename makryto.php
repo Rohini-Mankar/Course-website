@@ -1,0 +1,539 @@
+
+
+<?php
+
+$insert=false;
+if(isset($_POST['register'])){
+
+$server="localhost";
+$username="root";
+$password="";
+$db="website";
+
+$con = mysqli_connect($server, $username, $password);
+
+mysqli_select_db($con,$db);
+
+
+$fullname =$_POST['fullname'];
+$mobile =$_POST['mobile'];
+$email =$_POST['email'];
+$coursename =$_POST['coursename'];
+$city =$_POST['city'];
+
+
+
+
+
+$data= "INSERT INTO makryto(fullname, mobile, email, coursename, city) VALUES ('$fullname',$mobile,'$email','$coursename','$city')";
+
+
+//echo $data;
+if($con->query($data)== true){
+    //echo "Successfully inserted";
+    $insert=true;
+    header("Location:registered.php");
+  exit;  
+}
+
+
+else{
+    echo "ERROR: ".$data."<br>". $con->error;
+}
+
+$con->close();
+
+if(!$con)
+{
+    die("connection to this database failed due to" .mysqli_connect_error());
+}
+echo "Success connecting to the database";
+
+}
+
+
+
+
+?>
+
+
+
+<!DOCTYPE html>
+<html>
+<title>Makryto Innovation website</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="C:\Users\INTEL\Desktop\mykryto\css\bootstrap.css" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=verdana ' rel='stylesheet'>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+
+body, html {
+  height: 100%;
+  line-height: 1.8;
+}
+
+/* Full height image header */
+.bgimg-1 {
+  background-position: center;
+  background-size: cover;
+  background-image: url("per.jpg");
+  min-height: 100%;
+}
+
+.w3-bar .w3-button {
+  padding: 16px;
+}
+.bg-info{
+		border-radius: 18px;
+padding: 8px;
+ transition:.3s .25s ease-out;
+
+
+}
+
+.form-submit-button {
+
+background:green;
+
+color: #fff;
+
+border: 1px solid #eee;
+
+border-radius: 5px;
+
+box-shadow: 5px 5px 5px #eee;
+
+text-shadow:none;
+
+}
+
+.form-submit-button:hover {
+
+background: #016ABC;
+
+color: #fff;
+
+border: 1px solid #eee;
+
+border-radius: 5px;
+
+box-shadow: 5px 5px 5px #eee;
+
+text-shadow:none;
+
+}
+
+.carousel-control.right, .carousel-control.left {
+  background-color: none;
+  color: #f4511e;
+}
+
+.carousel-indicators li {
+  border-color: #f4511e;
+}
+
+.carousel-indicators li.active {
+  background-color: #f4511e;
+}
+
+.item h4 {
+  font-size: 19px;
+  line-height: 1.375em;
+  font-weight: 400;
+  font-style: italic;
+  margin: 70px 0;
+
+}
+
+.item span {
+  font-style: normal;
+}
+
+
+
+
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide"><h3 style="font-family: verdana ;"><span><img src="m.jpg"></span>MAKRYTO INNOVATION PVT.LTD.</h3></a>
+
+ <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#about" class="w3-bar-item w3-button"><b>ABOUT US</b></a>
+      <a href="#courses" class="w3-bar-item w3-button"><i class="fa fa-laptop code"></i><b> COURSES</b></a>
+      <a href="#enroll now" class="w3-bar-item w3-button"><i class="fa fa-registered"></i><b> ENROLL NOW</b></a>
+      
+      <a href="#contact" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i><b> CONTACT</b></a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+<!-- Sidebar on small screens when clicking the menu icon -->
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT US</a>
+  
+ <a href="#enroll now" onclick="w3_close()" class="w3-bar-item w3-button">ENROLL NOW</a>
+  <a href="#courses" onclick="w3_close()" class="w3-bar-item w3-button">COURSES</a>
+  <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+</nav>
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white" style="padding:48px">
+    <span class="w3-jumbo w3-hide-small">Start something that matters</span><br>
+    <span class="w3-xxlarge w3-hide-large w3-hide-medium">Start something that matters</span><br>
+    <span class="w3-large">Develope yourself and Learn from the best</span>
+    <p><a href="#about" class="w3-button w3-yellow w3-padding-large w3-large w3-text-black w3-margin-top w3-opacity w3-hover-opacity-off"><b>Learn more and start today</b></a></p>
+  </div> 
+  <div class="w3-display-bottomleft w3-text-black w3-large" style="padding:24px 48px">
+    <a href="https://www.facebook.com/nikks001" target="blank"><i class="fa fa-facebook-official w3-hover-opacity w3-text-black"></i></a>&nbsp;&nbsp;&nbsp;
+   <a href="https://instagram.com/nikhil_karale_?igshid=1j7ax4t0ke8qi" target="blank"><i class="fa fa-instagram w3-hover-opacity w3-text-black"></i></a>&nbsp;&nbsp;&nbsp;
+    <a href="https://www.linkedin.com/in/nikhil-karale-7ba90572" target="blank"><i class="fa fa-linkedin w3-hover-opacity w3-text-black"></i></a>
+  </div>
+</header>
+
+<!-- About Section -->
+<div class="w3-container" style="padding:128px 16px" id="about">
+  <h2 class="w3-center w3-text-yellow"><b>ABOUT US</b></h2>
+  <p class="w3-center w3-large">Key features of our company</p>
+  <div class="w3-row-padding w3-center" style="margin-top:64px">
+    <div class="w3-quarter">
+      <i class="fa fa-eye w3-margin-bottom w3-jumbo w3-center"></i>
+      <p class="w3-large">Vision</p>
+      <p> We are the fastest growing and we have highest course completion rate in the technical industry.Our vision is to partner with the brightest minds and democratize education for everyone looking to learn new technologies.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-heart w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Mission</p>
+      <p>Our motive is to educate each and every poor so that they can also have the essence of technology. At makryto, we respect talent, skills, hardwork and knowledge. We are a family of intellectual and ambitious people with a desire to impart education, to stay committed to the core vision of makryto.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-diamond w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Pedagogies</p>
+      <p>We provide robust tech platform, an outcome based learning approach, industry relevant curriculum, strong mentorship and placement support.This ensures that every student has a unique and personalised learning experience.</p>
+    </div>
+    <div class="w3-quarter">
+      <i class="fa fa-cog w3-margin-bottom w3-jumbo"></i>
+      <p class="w3-large">Support</p>
+      <p>We are ridiculously committed to our students. Be it be constant reminders or 24*7 online support, we are always there at their service.When students commit to our course, we commit to them.</p>
+    </div>
+  </div>
+</div>
+<!-- Team Section -->
+<div class="w3-container" style="padding:128px 16px" id="courses">
+  <h1 class="w3-center"><b>OUR COURSES</b></h1>
+  <p class="w3-center w3-dark-grey w3-large">MAKE YOUR QUARANTINE WORTHY</p>
+<div class="w3-light-grey">
+<div class="container">
+<div class="row">
+	<div class="col-md-4">
+		<img src="bb.jpg">
+<p class="w3-opacity">Module 1</p>
+<h2>FRONT END WEB DEVELOPMENT</H2>
+                                  
+          <p class="collapse" id="demo1"><b>1. Learn complete HTML,CSS<br>2. Learn complete Boostrap, JQuery<br>3. Learn fundamental Angular JS<br>4. Internship Certificate</b></p><br><b>Course Duration- 30 days<br>Fees-499 Rs.</b><BR>
+<button class="btn btn-info" data-toggle="collapse" data-target="#demo1"> VIEW SYLLABUS </button></p>
+                 </div>
+	<div class="col-md-4">
+		<img src="ccc.jpg"><p class="w3-opacity">Module 2</p>
+                           <h2>BACK END WEB DEVELOPMENT</h2>
+         
+          <p class="collapse" id="demo2"><b>1. By using Basic & Advance PHP<br>2. By using Complete C#.Net<br>3. By using Complete Python<br>4. Free 10 Assignmnts & 1 Project<br>5. Internship Certificate </b></p><br><b>Course Duration- 30 days.<br>Fees- 499 Rs.</b><br>
+          <button class="btn btn-info" data-toggle="collapse" data-target="#demo2"> VIEW SYLLABUS </button></p>
+
+	</div>
+	<div class="col-md-4">
+		<img src="gg.jpg"><p class="w3-opacity">Module 3</p>
+                          <h2>PROGRAMMING WITH PYTHON</h2>
+         
+          <p class="collapse" id="demo3"><b>1. Datatypes, Controls statements, Strings<br>2. Python Files, Functions<br>3. Python Math, Date, JSON, PHP<br> 4. Advance Python with OOP<br>5. Python Exception Handling<br>6. Python Database Interactions<br>7. Create GUI Desktop Applications using TKinter<br>8. 10 Free Mock Test & 1 Project Free</p><br>Course Duration- 20 days<br>Fees-99 Rs.</b><br>
+<button class="btn btn-info" data-toggle="collapse" data-target="#demo3"> VIEW SYLLABUS </button></p>
+</div>
+</div>
+<br><br><br><br><br>
+
+<div class="row">
+	<div class="col-md-4">
+		<img src="dddd.png"><p class="w3-opacity">Module 4</p>
+                            <h2>PROGRAMMING WITH C,C++,JAVA</h2>
+          
+          <p class="collapse" id="demo4"><b>1. Basic, Variable, Datatype<br>2. Conditional Statements, Loops, Switch<br>3. Functions, Arrays, Strings<br>4. Pointer, File Handling<br>5. C++ - Function Overloading, Overriding, Virtual Function, Inheritance<br>6. Abstract class, Exception Handling, Polymorphism<br>7. 10 Technical Mock Test & Technical Interview Preparation</b></p><br><b>Course Duration- 40 Days<br>Fees- 999 Rs.</b><br>
+          <button class="btn btn-info" data-toggle="collapse" data-target="#demo4"> VIEW SYLLABUS </button></p>
+	</div>
+	<div class="col-md-4">
+		<img src="ee.jpg"><p class="w3-opacity">Module 5</p>
+                           <h2>MACHINE LEARNING USING PYTHON</h2>
+         
+          <p class="collapse" id="demo5"><b>1. Basic of Machine Learning<br>2. Supervised and Unsupervised ML<br>3. Bayer's Theorem, Data split & hyper parameter, Regression, Decision tree Algorithms, KNN Classification<br>4. Clustering, Random Forest</b></p><br>
+<b>Course Duration- 40 Days<br>Fees-2999 Rs.</b><br>
+<button class="btn btn-info" data-toggle="collapse" data-target="#demo5"> VIEW SYLLABUS </button></p>
+	</div>
+	<div class="col-md-4">
+		<img src="ff.png"><p class="w3-opacity">Module 6</p>
+                            <h2>DATA ANALYTICS USING PYTHON</h2>
+          
+          <p class="collapse" id="demo6"><b>1. Basic of Data Analytics<br>2. Anaconda, Numpy, Scipy, Pandas, Matplotlib, Seaborn, Scikit-learn<br>3. Jupyter Notebook, Web Scraping<br>4. Real Time Project.</B></p><br><b><b>Course Duration- 40 Days<br>Fees-2999 Rs.</b><br>
+
+
+          <button class="btn btn-info" data-toggle="collapse" data-target="#demo6"> VIEW SYLLABUS </button></p>
+	</div>
+</div>
+</div>
+<br><br><br>
+</div>
+
+ <!-- Work Section -->
+<div class="w3-container w3-dark-grey" style="padding:50px 90px" id="enroll now">
+  <h3 class="w3-center w3-text-yellow">Learn with us, Work with us</h3>
+  <p class="w3-center w3-large">DEVELOPE YOURSELF</p><br><br>
+<div class="container">
+  <div class="row" >
+    <div class="col-md-6">
+<br><br>
+<h1 style="text-align:center;color:black">BE A PROGRAMMER</h1>
+<h2 style="text-align:center;color:black">Front End developer+Back End developer</h2>
+    <p><b>Learn complete HTML, CSS, Bootstrap 4, JQuery, PHP-MySQL, C, C++, JAVA, C#.Net, Python, Machine Learning & Data Analytics Using Python, Training on 1 Project, 10 assignments, 1 Project Free and Internship Certificate</b></p>
+<div align="center"><button class="btn btn-primary" data-toggle="modal" data-target="#remo">REGISTER HERE</button></div>
+    </div>
+    <div class="col-md-6">
+    <video controls width="600" height="300">
+<source src="web.mp4">
+</video>
+    </div>
+    </div>
+    
+  </div>
+
+  
+</div>
+<div class="modal" id="remo">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+
+			<h5>Registration Form</h5>
+<button class="close" data-dismiss="modal"> &times; </button>
+
+			</div>
+			<div class="modal-body">
+				
+				<form action="makryto.php" method="post">
+ FullName- <input type="text" placeholder="Enter your name" name="fullname" class="form-control"> <br>
+ Mobile No. - <input type="number" placeholder="Enter mobile number" name="mobileno" class="form-control"> <br>
+ Email - <input type="email" placeholder="Enter email" name="email" class="form-control"> <br>
+ Course Name - <input type="text" list="Course name" name="coursename" class="form-control">
+                                        
+ <datalist id="Course name">
+ <option value="FRONT END WEB DEVELOPEMENT">
+  <option value="BACK END WEB DEVELOPEMENT">
+<option value="Complete Programming in C, C++, JAVA">
+  <option value="PROGRAMMING WITH PYTHON">
+<option value="MACHINE LEARNING USING PYTHON">
+  <option value="DATA ANALYTICS USING PYTHON">
+                                                                             
+   </datalist> 
+
+
+
+
+
+
+<br>
+					City - <input type="text" placeholder="Enter your city" name="city" class="form-control"> <br>
+                                                                             
+					
+<button class="form-submit-button" name="register">Register</button>
+
+				</form>
+                                                </div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--note chi coding-->
+<div class="container-fluid">
+<br>
+<br>
+<div class="row">
+		<div class="col-md-6">
+			<div class="alert alert-success">
+<h3><b>IMPORTANT NOTE : </b></h3>
+
+<ul>
+                                                                  <li>Student can select any one course from each module, details will be convey later to that person through mail or contact.</li>
+<br>
+<li>If you select multiple module, discount will be given.</li>
+<br>
+ <li>2 Days Demo class is free for every module, then you can do transaction.</li>
+<br>
+ <li>All Students will get course completion certifications. Top 10 will get excellence trainee certifications.</li>
+<br>
+<li>Student will get industry internship certifications as well.</li>
+<br>
+<li>All classes will be taken on Zoom or Google Meet App, separate time for each course.</li>
+<br>
+<li>With Module 4, 5 & 6, one Mega Project is absolutely free.</li>
+<br>
+<li>You can also Apply for One month internship program, contact for details.</li>
+<br>
+<li>After selecting courses call or mail or register to the coach for enrollment.</li></ul>
+</div></div>
+<div class="col-md-1"></div>
+
+<div class="col-md-4"> 
+
+      <p class="bg-info"> E- Enthusiastic</p>
+      <p class="bg-info"> D- Dedicated</p>
+      <p class="bg-info"> U- Unified</p>
+      <p class="bg-info"> C- Confidence</p>
+      <p class="bg-info"> A- Aim</p>
+      <p class="bg-info"> T- Tackle</p>
+      <p class="bg-info"> I- Interest</p>
+      <p class="bg-info"> O- Opportunity</p>
+      <p class="bg-info"> N- Nationals</p>
+      
+      </div>
+</div>
+</div>
+</div>
+</div>
+<!--testimonial-->
+<h1 style="text-align:center; color: black"><b>TESTIMONIAL</b></h1>
+<div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+    <li data-target="#myCarousel" data-slide-to="3"></li>
+    <li data-target="#myCarousel" data-slide-to="4"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+
+    <div class="item active">
+    <h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Rohini Mankar, Learner.</span></h4>
+    </div>
+    <div class="item">
+      <h4>"I recommend this course to anyone who needs to engage in online learning"<br><span style="font-style:normal;">Vaishnavi Asolkar, Learner.</span></h4>
+    </div>
+    <div class="item">
+      <h4>"Best courses with enthusiastic tutors."<br><span style="font-style:normal;">Rajshree Datey, Learner.</span></h4>
+    </div>
+    <div class="item">
+      <h4>"This is a very well organized online teaching technology skill - building course."<br><span style="font-style:normal;">Mithila Ghule, Learner.</span></h4>
+    </div>
+    <div class="item">
+      <h4>"Enjoyed the course! I learned many new things."<br><span style="font-style:normal;">Neha Ingle, Learner</span></h4>
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+<br><br>
+
+
+
+
+
+
+
+
+<!-- Contact Section -->
+<div class="w3-container w3-light-grey" style="padding:128px 16px" id="contact">
+  <h3 class="w3-center">CONTACT</h3>
+  <p class="w3-center w3-large">Lets get in touch. Send us a message:</p>
+  <div style="margin-top:48px">
+    <p><i class="fa fa-map-marker fa-fw w3-xxlarge w3-margin-right"></i> At Rajapeth, Amravati, MH, India</p>
+    <p><i class="fa fa-phone fa-fw w3-xxlarge w3-margin-right"></i>CALL US : <a href="tel: 9370222523">9370222523</a> <a href="tel: 8830137703">8830137703</a></p>
+    <p><i class="fa fa-envelope fa-fw w3-xxlarge w3-margin-right"> </i>Send Mail :<a href="mailto:nikhil.karale10@gmail.com">nikhil.karale10@gmail.com</a></p>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-64">
+  <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+  <div class="w3-xlarge w3-section">
+   
+   <a href="https://instagram.com/__.rohini.___?igshid=mhunpnaep489" target="blank">  <i class="fa fa-instagram w3-hover-opacity"></i></a>
+   <a href="https://twitter.com/rohini_mankar?s=08" target="blank"><i class="fa fa-twitter w3-hover-opacity"></i></a>
+    <a href="https://www.linkedin.com/in/rohini-mankar-72078b1a4" target="blank"><i class="fa fa-linkedin w3-hover-opacity"></i></a>
+  </div>
+  <p style="color: grey">Copyright &copy; RM Developers. All rights reserved!<br>Developed by <span style="color: white">Rohini Mankar</span></p>
+</footer>
+ 
+<script>
+// Modal Image Gallery
+function onClick(element) {
+  document.getElementById("cc.png").src = element.src;
+  document.getElementById("modal01").style.display = "block";
+  var captionText = document.getElementById("caption");
+  captionText.innerHTML = element.alt;
+}
+
+
+// Toggle between showing and hiding the sidebar when clicking the menu icon
+var mySidebar = document.getElementById("mySidebar");
+
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+  } else {
+    mySidebar.style.display = 'block';
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+    mySidebar.style.display = "none";
+}
+</script>
+
+</body>
+</html>
+makryto.php
+Displaying makryto.php.
